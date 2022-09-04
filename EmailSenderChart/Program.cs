@@ -22,7 +22,7 @@ namespace EmailSenderChart
                                   </body>
                                   </html>";
 
-            using (SmtpClient client = new SmtpClient("smtp-mail.outlook.com", 587))
+            using (SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SmptClientDomain"], Convert.ToInt32(ConfigurationManager.AppSettings["Email"])))
             {
                 client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["Email"], ConfigurationManager.AppSettings["Password"]);
                 client.EnableSsl = true;
