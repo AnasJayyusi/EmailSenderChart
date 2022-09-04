@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
-using System.Web;
 
 namespace EmailSenderChart
 {
@@ -22,7 +21,7 @@ namespace EmailSenderChart
                                   </body>
                                   </html>";
 
-            using (SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SmptClientDomain"], Convert.ToInt32(ConfigurationManager.AppSettings["Email"])))
+            using (SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SmptClientDomain"], Convert.ToInt32(ConfigurationManager.AppSettings["SmptClientPort"])))
             {
                 client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["Email"], ConfigurationManager.AppSettings["Password"]);
                 client.EnableSsl = true;
